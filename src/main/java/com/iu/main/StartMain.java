@@ -1,5 +1,6 @@
 package com.iu.main;
 
+import com.iu.main.bankBook.BankBookController;
 import com.iu.main.bankBook.BankBookDAO;
 import com.iu.main.bankBook.BankBookDTO;
 import com.iu.main.bankBook.BankBookInput;
@@ -9,17 +10,8 @@ public class StartMain {
 
 	public static void main(String[] args) {
 		try {
-			BankBookDAO bankBookDAO = new BankBookDAO();
-//			BankBookInput bankBookInput = new BankBookInput();
-//			
-//			BankBookDTO bankBookDTO= bankBookInput.bankBookAdd();
-//			
-//			
-//			int result = bankBookDAO.bankBookAdd(bankBookDTO);
-			BankBookDTO bankBookDTO = new BankBookDTO();
-			bankBookDTO.setBookNum(1);
-			bankBookDTO = bankBookDAO.bankBookDetail(bankBookDTO);
-//			int result= bankBookDAO.bankBookDelete(bankBookDTO);
+			BankBookController bankBookController = new BankBookController();
+			bankBookController.start();
 			
 			
 		}catch (Exception e) {

@@ -10,6 +10,25 @@ public class BankBookInput {
 		this.sc = new Scanner(System.in);
 	}
 	
+	public BankBookDTO bankBookDetail() {
+		BankBookDTO bankBookDTO = new BankBookDTO();
+		System.out.println("조회할 번호를 입력하세요");
+		
+		bankBookDTO.setBookNum(sc.nextLong());
+		
+		return bankBookDTO;
+	} 
+	
+	public BankBookDTO bankBookDelete() {
+		BankBookDTO bankBookDTO = new BankBookDTO();
+		System.out.println("삭제할 번호를 입력하세요");
+		
+		bankBookDTO.setBookNum(sc.nextLong());
+		
+		return bankBookDTO;
+	}
+	
+	
 	public BankBookDTO bankBookAdd() {
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		System.out.println("상품명을 입력하세요");
