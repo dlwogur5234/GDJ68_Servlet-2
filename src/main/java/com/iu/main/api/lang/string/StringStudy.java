@@ -64,6 +64,29 @@ public class StringStudy {
 		//확장자가 doc면 문서파일 출력
 		//확장자가 mp3면 오디오파일 출력
 		//그외   알수없는 파일 형식 출력
+		System.out.println("파일명 입력");
+		String fileName = sc.nextLine();
+		System.out.println(fileName);
+	
+		//2가지, 1) split, subString
+//		int index = fileName.lastIndexOf(".");
+//		fileName.substring(index);
+		
+		fileName=fileName.substring(fileName.lastIndexOf(".")+1);
+		//fileName = fileName.toLowerCase();
+		//fileName.equals("jpg");
+		
+		if(fileName.toLowerCase().equals("jpg")) {
+			System.out.println("이미지");
+		}else if(fileName.equals("doc")) {
+			System.out.println("문서");
+		}else if(fileName.equals("mp3")) {
+			System.out.println("음악");
+		}else {
+			System.out.println("알수 없음");
+		}
+		
+		
 		
 	}
 	
@@ -74,7 +97,28 @@ public class StringStudy {
 		//확장자가 mp3, wav, midi, pcm 면 오디오파일 출력
 		//그외   알수없는 파일 형식 출력
 		//return;
+		String fileName="abc.jpg";
 		
+		String [] images= {"jpg", "jpeg", "png", "gif"};
+		String [] docs = {"doc","txt","hwp"};
+		
+		fileName=fileName.substring(fileName.lastIndexOf(".")+1);
+	
+		for(int i=0;i<images.length;i++) {
+			if(fileName.equals(images[i])) {
+				
+				return;
+			}
+		}	
+		
+		for(int i=0;i<docs.length;i++) {
+			if(fileName.equals(docs[i])) {
+				
+				return;
+			}
+		}
+		
+		System.out.println("알수 없는 파일");
 	}
 	
 	

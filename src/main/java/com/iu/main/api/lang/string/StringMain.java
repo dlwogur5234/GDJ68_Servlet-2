@@ -6,7 +6,7 @@ public class StringMain {
 
 	public static void main(String[] args) {
 		StringStudy stringStudy = new StringStudy();
-		stringStudy.s3();
+		stringStudy.ex1();
 //		Scanner sc = new Scanner(System.in);
 //		
 //		String name="winter";
