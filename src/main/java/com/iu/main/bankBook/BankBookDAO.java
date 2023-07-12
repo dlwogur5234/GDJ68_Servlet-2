@@ -3,10 +3,47 @@ package com.iu.main.bankBook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.iu.main.util.DBConnector;
 
 public class BankBookDAO {
+	
+	//상품 N개조회
+	//bankBookSearch
+	
+	
+	//상품 N개조회
+	public ArrayList<BankBookDTO> bankBookList()throws Exception{
+		ArrayList<BankBookDTO> ar = new ArrayList<BankBookDTO>();
+		
+		//1. DB 연결
+		Connection con = DBConnector.getConnection();
+		
+		//2. query문
+		String sql ="SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC";
+		
+		//3. 미리보내기
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		//4. ?세팅
+		
+		//5. 최종 전송 및 결과 처리
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			BankBookDTO bankBookDTO = new BankBookDTO();
+			bankBookDTO.setBookNum(rs.getLong("BOOKNUM"));
+			bankBookDTO.setBookName(rs.getString("BOOKNAME"));
+			bankBookDTO.setBookRate(rs.getDouble("BOOKRATE"));
+			bankBookDTO.setBookSale(rs.getInt("BOOKSALE"));
+			ar.add(bankBookDTO);
+		}
+		
+		DBConnector.disConnect(rs, st, con);
+		
+		return ar;
+	}
 	
 	//상품 1개 조회
 	public BankBookDTO bankBookDetail(BankBookDTO bankBookDTO) throws Exception {
@@ -36,6 +73,8 @@ public class BankBookDAO {
 			bankBookDTO=null;
 		}
 		
+		DBConnector.disConnect(rs, st, con);
+		
 		return bankBookDTO;
 		
 	}
@@ -57,6 +96,9 @@ public class BankBookDAO {
 		//5. 최종 전송 및 결과 처리
 		int result = st.executeUpdate();
 		System.out.println("DB Insert");
+		
+		DBConnector.disConnect(st, con);
+		
 		return result;
 	}
 	
@@ -73,6 +115,8 @@ public class BankBookDAO {
 		int result = st.executeUpdate();
 		
 		System.out.println("Db Delete");
+		
+		DBConnector.disConnect(st, con);
 		
 		return result;
 	}

@@ -1,5 +1,6 @@
 package com.iu.main.bankBook;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BankBookController {
@@ -29,7 +30,8 @@ public class BankBookController {
 			System.out.println("1. 제품 등록");
 			System.out.println("2. 제품 삭제");
 			System.out.println("3. 제품 조회");
-			System.out.println("4. 프로그램종료");
+			System.out.println("4. 제품 전체 조회");
+			System.out.println("5. 프로그램  종료");
 			int select = this.sc.nextInt();
 			
 			switch(select) {
@@ -60,6 +62,10 @@ public class BankBookController {
 				}else {
 					bankBookOutput.view("해당 상품은 존재하지 않습니다");
 				}
+				break;
+			case 4:
+				ArrayList<BankBookDTO> ar = bankBookDAO.bankBookList();
+				bankBookOutput.view(ar);
 				break;
 			default:
 				flag=!flag;

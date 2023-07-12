@@ -1,6 +1,15 @@
 package com.iu.main.bankBook;
 
+import java.util.ArrayList;
+
 public class BankBookOutput {
+	
+	public void view(ArrayList<BankBookDTO> ar) {
+		for(int i=0;i<ar.size();i++) {
+			this.view(ar.get(i)); 
+		}
+		
+	}
 	
 	public void view(BankBookDTO bankBookDTO) {
 		System.out.println("BookNum : "+bankBookDTO.getBookNum());;
